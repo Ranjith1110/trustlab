@@ -106,7 +106,7 @@ const Hero = () => {
             </div>
 
             {/* Central Diagnostic Capsule (The Premium Image Setup) */}
-            <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+            <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none mt-20">
                 <div 
                     ref={imageContainerRef}
                     className="relative w-[90%] md:w-[400px] h-[80vh] rounded-[100px] overflow-hidden border-[6px] border-white shadow-[0_30px_60px_rgba(0,0,0,0.08)] bg-white"
@@ -191,7 +191,7 @@ const Hero = () => {
                 <div className="p-5 rounded-full bg-white shadow-xl mb-8 border border-slate-100">
                     <ShieldCheck className="w-12 h-12 text-[#29a997]" />
                 </div>
-                <h2 className="text-[#0f172a] text-4xl md:text-6xl font-light mb-6">
+                <h2 className="text-[#0f172a] text-3xl md:text-6xl font-light mb-6">
                     Don't wait to find out <br />
                     <span className="font-bold relative inline-block">
                         what's hiding within.
