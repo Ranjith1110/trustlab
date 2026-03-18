@@ -135,7 +135,7 @@ const Hero = () => {
 
             {/* Layer 1: Opening Statement */}
             <div className="initial-text absolute inset-0 flex flex-col items-center justify-center z-20 text-center px-6 pointer-events-none">
-                <div className="bg-white/70 backdrop-blur-md px-8 py-10 rounded-3xl shadow-xl max-w-4xl border border-white/50">
+                <div className="bg-white/70 backdrop-blur-md px-8 py-10 rounded-3xl shadow-xl max-w-4xl border border-white/50 mt-20">
                     <div className="flex items-center justify-center gap-2 mb-6 overflow-hidden">
                         <div className="h-[1px] w-8 md:w-12 bg-[#29a997] hero-line" />
                         <span className="text-[#29a997] text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase hero-line">TrustLab Premium Diagnostics</span>
