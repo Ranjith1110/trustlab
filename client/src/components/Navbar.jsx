@@ -13,7 +13,7 @@ const Navbar = () => {
 
     // Desktop top navigation data
     const navItems = [
-        // { name: 'Home', id: 'home' },
+        { name: 'Home', id: 'home' },
         { name: 'Membership', id: 'membership' },
         { name: 'Book a Test', id: 'book-a-test' },
         { 
