@@ -72,14 +72,14 @@ const PackagesTest = () => {
             
             {/* Background Accent Lines (Matches DirectoryOfServices) */}
             <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none" 
-                 style={{ backgroundImage: 'linear-gradient(#29a997 1px, transparent 1px), linear-gradient(to right, #29a997 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
+                 style={{ backgroundImage: 'linear-gradient(#27b199 1px, transparent 1px), linear-gradient(to right, #27b199 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto">
                 
                 {/* Header Section */}
                 <div className="section-header text-center mb-12">
-                    <h4 className="text-[#29a997] font-bold tracking-[0.4em] uppercase text-[10px] mb-4">
+                    <h4 className="text-[#27b199] font-bold tracking-[0.4em] uppercase text-[10px] mb-4">
                         Diagnostic Categories
                     </h4>
                     <h2 className="text-[#0f172a] text-4xl md:text-5xl font-light">
@@ -99,7 +99,7 @@ const PackagesTest = () => {
                             className={`tab-btn whitespace-nowrap px-8 md:px-10 py-4 rounded-xl font-bold text-[10px] md:text-xs uppercase tracking-widest transition-all duration-300 border ${
                                 activeTab === tab 
                                 ? 'bg-[#0f172a] text-white border-[#0f172a] shadow-[0_10px_20px_rgba(15,23,42,0.2)]' 
-                                : 'bg-white text-gray-400 border-gray-200 hover:border-[#29a997] hover:text-[#29a997] shadow-sm'
+                                : 'bg-white text-gray-400 border-gray-200 hover:border-[#27b199] hover:text-[#27b199] shadow-sm'
                             }`}
                         >
                             {tab}
@@ -115,7 +115,7 @@ const PackagesTest = () => {
                             className="test-card group relative bg-white border border-gray-100 rounded-[2rem] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.03)] hover:shadow-[0_30px_60px_rgba(41,169,151,0.1)] hover:-translate-y-2 transition-all duration-500 flex flex-col overflow-hidden"
                         >
                             {/* Decorative Top Line */}
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#29a997] to-[#f5ed00] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#27b199] to-[#f5ed00] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                             {/* 50% Off Badge */}
                             <div className="absolute top-6 right-6 bg-[#ef4444]/10 text-[#ef4444] font-black text-[9px] px-3 py-1.5 rounded-full uppercase tracking-widest flex items-center gap-1 border border-[#ef4444]/20">
@@ -125,13 +125,13 @@ const PackagesTest = () => {
 
                             <div className="flex-grow mt-4">
                                 {/* Title */}
-                                <h3 className="text-[#0f172a] font-bold text-lg md:text-xl leading-snug mb-6 group-hover:text-[#29a997] transition-colors pr-12">
+                                <h3 className="text-[#0f172a] font-bold text-lg md:text-xl leading-snug mb-6 group-hover:text-[#27b199] transition-colors pr-12">
                                     {item.name}
                                 </h3>
 
                                 {/* Parameters Indicator */}
                                 <div className="flex items-center gap-4 bg-gray-50 rounded-2xl p-4 mb-8 border border-gray-100">
-                                    <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-[#29a997] shadow-sm">
+                                    <div className="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-[#27b199] shadow-sm">
                                         <ShieldCheck className="w-5 h-5" />
                                     </div>
                                     <div className="flex flex-col">
@@ -144,7 +144,7 @@ const PackagesTest = () => {
                                 <div className="flex flex-col mb-8">
                                     <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Total Cost</span>
                                     <div className="flex items-end gap-3">
-                                        <span className="text-[#29a997] font-black text-3xl">₹{item.newPrice}</span>
+                                        <span className="text-[#27b199] font-black text-3xl">₹{item.newPrice}</span>
                                         <span className="text-gray-300 line-through text-sm font-medium mb-1">₹{item.oldPrice}</span>
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@ const PackagesTest = () => {
 
                 {/* Interactive Footer CTA */}
                 <div className="mt-14 flex flex-col items-center">
-                    <button className="group px-10 py-4 bg-white border border-gray-200 rounded-xl text-[#0f172a] font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-[#29a997] hover:text-white hover:border-[#29a997] shadow-sm hover:shadow-[0_10px_20px_rgba(41,169,151,0.2)] transition-all duration-500 flex items-center gap-3">
+                    <button className="group px-10 py-4 bg-white border border-gray-200 rounded-xl text-[#0f172a] font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-[#27b199] hover:text-white hover:border-[#27b199] shadow-sm hover:shadow-[0_10px_20px_rgba(41,169,151,0.2)] transition-all duration-500 flex items-center gap-3">
                         Explore All {activeTab}
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </button>

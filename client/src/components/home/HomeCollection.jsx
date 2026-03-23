@@ -79,8 +79,8 @@ const HomeCollection = () => {
                         
                         {/* Eyebrow */}
                         <div className="hc-anim flex items-center gap-4">
-                            <div className="h-[2px] w-10 bg-[#29a997]" />
-                            <span className="text-[#29a997] text-xs font-bold tracking-[0.3em] uppercase">
+                            <div className="h-[2px] w-10 bg-[#27b199]" />
+                            <span className="text-[#27b199] text-xs font-bold tracking-[0.3em] uppercase">
                                 Doorstep Diagnostics
                             </span>
                         </div>
@@ -101,24 +101,24 @@ const HomeCollection = () => {
                             <div>
                                 <h3 className="text-[#0f172a] text-lg font-medium mb-1">
                                     Think Home Collection, <br />
-                                    <span className="font-bold text-[#29a997]">Think TrustLab!</span>
+                                    <span className="font-bold text-[#27b199]">Think TrustLab!</span>
                                 </h3>
                                 <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block mt-4 mb-1">
                                     Call to Book
                                 </span>
-                                <a href="tel:7440075400" className="text-3xl font-black text-[#0f172a] hover:text-[#29a997] transition-colors">
+                                <a href="tel:7440075400" className="text-3xl font-black text-[#0f172a] hover:text-[#27b199] transition-colors">
                                     74400 75400
                                 </a>
                             </div>
                             
                             <div className="hidden sm:flex w-16 h-16 rounded-full bg-slate-50 border border-slate-100 items-center justify-center shrink-0">
-                                <Phone className="w-6 h-6 text-[#29a997]" />
+                                <Phone className="w-6 h-6 text-[#27b199]" />
                             </div>
                         </div>
 
                         {/* Simple Action Buttons */}
                         <div className="hc-anim flex flex-wrap gap-4 mt-2">
-                            <button className="px-8 py-4 bg-[#29a997] hover:bg-[#1e8576] text-white rounded-xl font-bold uppercase tracking-widest text-xs transition-colors">
+                            <button className="px-8 py-4 bg-[#27b199] hover:bg-[#1e8576] text-white rounded-xl font-bold uppercase tracking-widest text-xs transition-colors">
                                 Contact Now
                             </button>
                             <button className="px-8 py-4 bg-transparent border border-white/30 hover:bg-white hover:text-[#0f172a] text-white rounded-xl font-bold uppercase tracking-widest text-xs transition-all flex items-center gap-2 group">
@@ -145,8 +145,8 @@ const HomeCollection = () => {
                                 ref={badgeRef}
                                 className="absolute -bottom-6 -left-6 md:-left-10 bg-white p-5 rounded-2xl shadow-xl flex items-center gap-4 z-20 border border-slate-100"
                             >
-                                <div className="bg-[#29a997]/10 p-3 rounded-xl">
-                                    <ShieldCheck className="w-6 h-6 text-[#29a997]" />
+                                <div className="bg-[#27b199]/10 p-3 rounded-xl">
+                                    <ShieldCheck className="w-6 h-6 text-[#27b199]" />
                                 </div>
                                 <div>
                                     <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">100% Verified</p>

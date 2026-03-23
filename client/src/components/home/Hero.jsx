@@ -124,9 +124,9 @@ const Hero = () => {
                     {/* Laser Scanner confined to the capsule */}
                     <div 
                         ref={scannerRef}
-                        className="absolute top-0 left-0 w-full h-[2px] bg-[#29a997] shadow-[0_0_20px_4px_rgba(41,169,151,0.6)] z-20"
+                        className="absolute top-0 left-0 w-full h-[2px] bg-[#27b199] shadow-[0_0_20px_4px_rgba(41,169,151,0.6)] z-20"
                     >
-                        <div className="absolute left-1/2 -translate-x-1/2 -top-6 bg-white text-[#29a997] text-[9px] font-black uppercase tracking-widest py-1 px-3 rounded-full shadow-md flex items-center gap-2">
+                        <div className="absolute left-1/2 -translate-x-1/2 -top-6 bg-white text-[#27b199] text-[9px] font-black uppercase tracking-widest py-1 px-3 rounded-full shadow-md flex items-center gap-2">
                             <Activity className="w-3 h-3 animate-pulse" /> Scanning
                         </div>
                     </div>
@@ -137,9 +137,9 @@ const Hero = () => {
             <div className="initial-text absolute inset-0 flex flex-col items-center justify-center z-20 text-center px-6 pointer-events-none">
                 <div className="bg-white/70 backdrop-blur-md px-8 py-10 rounded-3xl shadow-xl max-w-4xl border border-white/50 mt-20">
                     <div className="flex items-center justify-center gap-2 mb-6 overflow-hidden">
-                        <div className="h-[1px] w-8 md:w-12 bg-[#29a997] hero-line" />
-                        <span className="text-[#29a997] text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase hero-line">TrustLab Premium Diagnostics</span>
-                        <div className="h-[1px] w-8 md:w-12 bg-[#29a997] hero-line" />
+                        <div className="h-[1px] w-8 md:w-12 bg-[#27b199] hero-line" />
+                        <span className="text-[#27b199] text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase hero-line">TrustLab Premium Diagnostics</span>
+                        <div className="h-[1px] w-8 md:w-12 bg-[#27b199] hero-line" />
                     </div>
                     
                     <h1 className="text-[#0f172a] text-4xl md:text-6xl font-light leading-tight">
@@ -147,7 +147,7 @@ const Hero = () => {
                             <span className="block hero-line">Your body often stays</span>
                         </span>
                         <span className="block overflow-hidden pb-2">
-                            <span className="block hero-line italic font-serif text-[#29a997]">silent</span>
+                            <span className="block hero-line italic font-serif text-[#27b199]">silent</span>
                         </span>
                         <span className="block overflow-hidden pb-2">
                             <span className="block hero-line">until it's too late.</span>
@@ -170,11 +170,11 @@ const Hero = () => {
                     >
                         <div className="bg-white/80 backdrop-blur-xl p-5 md:p-6 rounded-2xl border border-white shadow-[0_20px_40px_rgba(0,0,0,0.06)] relative overflow-hidden">
                             {/* Decorative Accent */}
-                            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#29a997] to-[#f5ed00]"></div>
+                            <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#27b199] to-[#f5ed00]"></div>
                             
                             <div className="flex items-center gap-3 mb-3">
-                                <div className="p-2 rounded-xl bg-[#29a997]/10">
-                                    <AlertCircle className="w-4 h-4 text-[#29a997]" />
+                                <div className="p-2 rounded-xl bg-[#27b199]/10">
+                                    <AlertCircle className="w-4 h-4 text-[#27b199]" />
                                 </div>
                                 <h3 className="text-[#0f172a] font-black uppercase tracking-widest text-[9px] md:text-[10px]">Fact 0{index + 1}</h3>
                             </div>
@@ -189,7 +189,7 @@ const Hero = () => {
             {/* Layer 3: Final Call to Action */}
             <div className="final-section absolute inset-0 flex flex-col items-center justify-center z-40 bg-[#f8fafc]/95 backdrop-blur-lg px-6 text-center">
                 <div className="p-5 rounded-full bg-white shadow-xl mb-8 border border-slate-100">
-                    <ShieldCheck className="w-12 h-12 text-[#29a997]" />
+                    <ShieldCheck className="w-12 h-12 text-[#27b199]" />
                 </div>
                 <h2 className="text-[#0f172a] text-3xl md:text-6xl font-light mb-6">
                     Don't wait to find out <br />
@@ -205,7 +205,7 @@ const Hero = () => {
                     <span className="relative z-10 flex items-center gap-3 font-bold tracking-[0.15em] uppercase text-xs">
                         Book Your Test <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
                     </span>
-                    <div className="absolute inset-0 bg-[#29a997] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
+                    <div className="absolute inset-0 bg-[#27b199] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
                 </button>
             </div>
         </section>

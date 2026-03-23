@@ -93,7 +93,7 @@ const ContactSection = () => {
             {/* Ambient Background Blob */}
             <div 
                 ref={blobRef}
-                className="absolute top-0 right-0 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-[#29a997]/5 rounded-full blur-[100px] md:blur-[120px] pointer-events-none -z-10 translate-x-1/3 -translate-y-1/4"
+                className="absolute top-0 right-0 w-[600px] md:w-[800px] h-[600px] md:h-[800px] bg-[#27b199]/5 rounded-full blur-[100px] md:blur-[120px] pointer-events-none -z-10 translate-x-1/3 -translate-y-1/4"
             ></div>
 
             <div className="relative z-10 max-w-7xl mx-auto">
@@ -104,8 +104,8 @@ const ContactSection = () => {
                         
                         {/* Eyebrow Label */}
                         <div className="contact-anim flex items-center gap-3 mb-5 md:mb-6">
-                            <div className="h-[2px] w-8 bg-[#29a997]" />
-                            <span className="text-[#29a997] text-[10px] font-bold tracking-[0.3em] uppercase flex items-center gap-2">
+                            <div className="h-[2px] w-8 bg-[#27b199]" />
+                            <span className="text-[#27b199] text-[10px] font-bold tracking-[0.3em] uppercase flex items-center gap-2">
                                 <Headphones className="w-4 h-4" /> 24/7 Support
                             </span>
                         </div>
@@ -113,7 +113,7 @@ const ContactSection = () => {
                         {/* Heading */}
                         <h2 className="contact-anim text-[#0f172a] text-3xl md:text-4xl font-light leading-snug mb-4">
                             We're always here to talk to you. <br className="hidden sm:block" />
-                            Call us Now - <span className="font-bold text-[#29a997]">74400 75400</span>
+                            Call us Now - <span className="font-bold text-[#27b199]">74400 75400</span>
                         </h2>
 
                         {/* Subheading */}
@@ -124,13 +124,13 @@ const ContactSection = () => {
                         {/* Form Container */}
                         <div className="contact-anim bg-white border border-gray-100 rounded-[2rem] p-6 md:p-8 shadow-[0_20px_40px_rgba(0,0,0,0.04)] relative overflow-hidden">
                             {/* Decorative Top Line */}
-                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#29a997] to-[#0f172a]"></div>
+                            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#27b199] to-[#0f172a]"></div>
 
                             {isSubmitted ? (
                                 // Success State
                                 <div className="flex flex-col items-center justify-center py-12 text-center animate-in fade-in zoom-in duration-500">
-                                    <div className="w-16 h-16 bg-[#29a997]/10 rounded-full flex items-center justify-center mb-4">
-                                        <CheckCircle2 className="w-8 h-8 text-[#29a997]" />
+                                    <div className="w-16 h-16 bg-[#27b199]/10 rounded-full flex items-center justify-center mb-4">
+                                        <CheckCircle2 className="w-8 h-8 text-[#27b199]" />
                                     </div>
                                     <h3 className="text-xl font-bold text-[#0f172a] mb-2">Message Sent!</h3>
                                     <p className="text-slate-500 text-sm">Our team will be contacting you shortly.</p>
@@ -144,7 +144,7 @@ const ContactSection = () => {
                                         <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1">Full Name</label>
                                         <div className="relative">
                                             {/* Icon perfectly centered vertically */}
-                                            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#29a997] transition-colors pointer-events-none" />
+                                            <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#27b199] transition-colors pointer-events-none" />
                                             <input 
                                                 type="text" 
                                                 name="name"
@@ -152,7 +152,7 @@ const ContactSection = () => {
                                                 value={formData.name}
                                                 onChange={handleInputChange}
                                                 placeholder="John Doe" 
-                                                className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#29a997] focus:ring-4 focus:ring-[#29a997]/10 transition-all placeholder:text-gray-300"
+                                                className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#27b199] focus:ring-4 focus:ring-[#27b199]/10 transition-all placeholder:text-gray-300"
                                             />
                                         </div>
                                     </div>
@@ -162,7 +162,7 @@ const ContactSection = () => {
                                         <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1">Phone Number</label>
                                         <div className="relative">
                                             {/* Icon perfectly centered vertically */}
-                                            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#29a997] transition-colors pointer-events-none" />
+                                            <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 group-focus-within:text-[#27b199] transition-colors pointer-events-none" />
                                             <input 
                                                 type="tel" 
                                                 name="phone"
@@ -170,7 +170,7 @@ const ContactSection = () => {
                                                 value={formData.phone}
                                                 onChange={handleInputChange}
                                                 placeholder="+91 00000 00000" 
-                                                className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#29a997] focus:ring-4 focus:ring-[#29a997]/10 transition-all placeholder:text-gray-300"
+                                                className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#27b199] focus:ring-4 focus:ring-[#27b199]/10 transition-all placeholder:text-gray-300"
                                             />
                                         </div>
                                     </div>
@@ -180,7 +180,7 @@ const ContactSection = () => {
                                         <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1.5 ml-1">Your Message</label>
                                         <div className="relative">
                                             {/* Icon pinned to exactly top-4 to align with first line of text */}
-                                            <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-gray-400 group-focus-within:text-[#29a997] transition-colors pointer-events-none" />
+                                            <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-gray-400 group-focus-within:text-[#27b199] transition-colors pointer-events-none" />
                                             <textarea 
                                                 name="message"
                                                 required
@@ -188,7 +188,7 @@ const ContactSection = () => {
                                                 value={formData.message}
                                                 onChange={handleInputChange}
                                                 placeholder="How can we help you?" 
-                                                className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#29a997] focus:ring-4 focus:ring-[#29a997]/10 transition-all placeholder:text-gray-300 resize-none"
+                                                className="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#27b199] focus:ring-4 focus:ring-[#27b199]/10 transition-all placeholder:text-gray-300 resize-none"
                                             ></textarea>
                                         </div>
                                     </div>
@@ -196,7 +196,7 @@ const ContactSection = () => {
                                     {/* Submit Button */}
                                     <button 
                                         type="submit" 
-                                        className="form-item mt-2 w-full py-4 bg-[#0f172a] hover:bg-[#29a997] text-white rounded-xl font-bold uppercase tracking-[0.2em] text-[10px] shadow-lg hover:shadow-[0_10px_20px_rgba(41,169,151,0.2)] transition-all duration-300 flex items-center justify-center gap-2 group"
+                                        className="form-item mt-2 w-full py-4 bg-[#0f172a] hover:bg-[#27b199] text-white rounded-xl font-bold uppercase tracking-[0.2em] text-[10px] shadow-lg hover:shadow-[0_10px_20px_rgba(41,169,151,0.2)] transition-all duration-300 flex items-center justify-center gap-2 group"
                                     >
                                         Send Message
                                         <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -228,7 +228,7 @@ const ContactSection = () => {
                                 className="absolute -bottom-1 -right-1 md:-bottom-2 md:-right-2 w-24 h-24 md:w-32 md:h-32 bg-[#fcfdfe] rounded-tl-[1.5rem] md:rounded-tl-[2rem] z-10 flex items-center justify-center"
                             >
                                 <div className="w-full h-full rounded-tl-[1.5rem] md:rounded-tl-[2rem] border-t-[6px] border-l-[6px] md:border-t-[8px] md:border-l-[8px] border-[#fcfdfe] overflow-hidden">
-                                     <div className="w-full h-full bg-[#29a997] rounded-tl-[1rem] md:rounded-tl-[1.5rem] flex items-center justify-center text-white shadow-inner">
+                                     <div className="w-full h-full bg-[#27b199] rounded-tl-[1rem] md:rounded-tl-[1.5rem] flex items-center justify-center text-white shadow-inner">
                                         <Headphones className="w-8 h-8 md:w-10 md:h-10 animate-pulse" />
                                      </div>
                                 </div>

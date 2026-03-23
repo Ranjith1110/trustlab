@@ -83,7 +83,7 @@ const Newsletter = () => {
             
             {/* Subtle Background Elements */}
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" 
-                 style={{ backgroundImage: 'linear-gradient(#29a997 1px, transparent 1px), linear-gradient(to right, #29a997 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
+                 style={{ backgroundImage: 'linear-gradient(#27b199 1px, transparent 1px), linear-gradient(to right, #27b199 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto w-full">
@@ -92,16 +92,16 @@ const Newsletter = () => {
                 <div className="newsletter-card relative bg-[#0f172a] rounded-[2.5rem] p-8 md:p-12 lg:p-16 shadow-[0_30px_60px_rgba(15,23,42,0.15)] overflow-hidden mb-24">
                     
                     {/* Decorative Background Glow in the card */}
-                    <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#29a997] rounded-full blur-[120px] opacity-20 -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
-                    <div className="absolute bottom-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#29a997] to-[#f5ed00]"></div>
+                    <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#27b199] rounded-full blur-[120px] opacity-20 -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
+                    <div className="absolute bottom-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#27b199] to-[#f5ed00]"></div>
 
                     <div className="flex flex-col lg:flex-row items-center justify-between gap-10 relative z-10">
                         
                         {/* Left Side: Content */}
                         <div className="w-full lg:w-1/2 text-center lg:text-left">
                             <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
-                                <Mail className="w-5 h-5 text-[#29a997]" />
-                                <span className="text-[#29a997] text-[10px] font-bold tracking-[0.3em] uppercase">
+                                <Mail className="w-5 h-5 text-[#27b199]" />
+                                <span className="text-[#27b199] text-[10px] font-bold tracking-[0.3em] uppercase">
                                     Stay Connected
                                 </span>
                             </div>
@@ -119,7 +119,7 @@ const Newsletter = () => {
                         <div className="w-full lg:w-1/2 max-w-lg mx-auto lg:mx-0">
                             {isSubscribed ? (
                                 <div className="bg-white/10 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex items-center justify-center gap-4 animate-in fade-in zoom-in duration-500">
-                                    <CheckCircle2 className="w-8 h-8 text-[#29a997]" />
+                                    <CheckCircle2 className="w-8 h-8 text-[#27b199]" />
                                     <div className="text-left">
                                         <h4 className="text-white font-bold text-lg">Subscribed!</h4>
                                         <p className="text-slate-400 text-sm">Thank you for joining our newsletter.</p>
@@ -128,19 +128,19 @@ const Newsletter = () => {
                             ) : (
                                 <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
                                     <div className="relative flex-grow group">
-                                        <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#29a997] transition-colors pointer-events-none" />
+                                        <Mail className="absolute left-5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 group-focus-within:text-[#27b199] transition-colors pointer-events-none" />
                                         <input 
                                             type="email" 
                                             required
                                             value={email}
                                             onChange={(e) => setEmail(e.target.value)}
                                             placeholder="Your Email Address" 
-                                            className="w-full pl-14 pr-5 py-4 lg:py-5 bg-white/5 border border-white/10 rounded-2xl text-white focus:bg-white/10 focus:outline-none focus:border-[#29a997] transition-all placeholder:text-gray-500 text-sm"
+                                            className="w-full pl-14 pr-5 py-4 lg:py-5 bg-white/5 border border-white/10 rounded-2xl text-white focus:bg-white/10 focus:outline-none focus:border-[#27b199] transition-all placeholder:text-gray-500 text-sm"
                                         />
                                     </div>
                                     <button 
                                         type="submit" 
-                                        className="py-4 lg:py-5 px-8 bg-[#29a997] hover:bg-white text-white hover:text-[#0f172a] rounded-2xl font-bold uppercase tracking-widest text-[10px] transition-colors flex items-center justify-center gap-2 shrink-0 group"
+                                        className="py-4 lg:py-5 px-8 bg-[#27b199] hover:bg-white text-white hover:text-[#0f172a] rounded-2xl font-bold uppercase tracking-widest text-[10px] transition-colors flex items-center justify-center gap-2 shrink-0 group"
                                     >
                                         Subscribe
                                         <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -154,7 +154,7 @@ const Newsletter = () => {
                 {/* --- BOTTOM: 4-COLUMN LOCATIONS GRID --- */}
                 <div className="locations-grid">
                     <div className="flex items-center gap-4 mb-10">
-                        <div className="h-[2px] w-8 bg-[#29a997]" />
+                        <div className="h-[2px] w-8 bg-[#27b199]" />
                         <h3 className="text-[#0f172a] text-lg font-bold uppercase tracking-widest">
                             Our Service Areas
                         </h3>
@@ -167,7 +167,7 @@ const Newsletter = () => {
                                     <a 
                                         key={locIndex} 
                                         href={`#${location.replace(/\s+/g, '-').toLowerCase()}`}
-                                        className="group flex items-start gap-2.5 text-slate-500 hover:text-[#29a997] transition-colors"
+                                        className="group flex items-start gap-2.5 text-slate-500 hover:text-[#27b199] transition-colors"
                                     >
                                         <MapPin className="w-4 h-4 mt-0.5 opacity-40 group-hover:opacity-100 shrink-0 transition-opacity" />
                                         <span className="text-sm font-medium leading-relaxed">

@@ -72,14 +72,14 @@ const DirectoryOfServices = () => {
 
             {/* Background Accent Lines (Matches Hero feel) */}
             <div className="absolute inset-0 z-0 opacity-[0.02] pointer-events-none"
-                style={{ backgroundImage: 'linear-gradient(#29a997 1px, transparent 1px), linear-gradient(to right, #29a997 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
+                style={{ backgroundImage: 'linear-gradient(#27b199 1px, transparent 1px), linear-gradient(to right, #27b199 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
             </div>
 
             <div className="relative z-10 max-w-7xl mx-auto">
 
                 {/* Header Section */}
                 <div className="dir-header text-center mb-14">
-                    <h4 className="text-[#29a997] font-bold tracking-[0.4em] uppercase text-[10px] mb-4">
+                    <h4 className="text-[#27b199] font-bold tracking-[0.4em] uppercase text-[10px] mb-4">
                         Search Library
                     </h4>
                     <h2 className="text-[#0f172a] text-4xl md:text-5xl font-light">
@@ -94,7 +94,7 @@ const DirectoryOfServices = () => {
                 <div className="form-container bg-white border border-gray-100 rounded-[2rem] p-8 md:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.03)] relative overflow-hidden">
 
                     {/* Decorative Top Line */}
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#29a997] to-[#0f172a]"></div>
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#27b199] to-[#0f172a]"></div>
 
                     <form onSubmit={handleSearch} className="flex flex-col gap-8">
 
@@ -105,14 +105,14 @@ const DirectoryOfServices = () => {
                             <div className="form-element relative group">
                                 <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Keyword</label>
                                 <div className="relative flex items-center">
-                                    <Search className="absolute left-4 w-4 h-4 text-gray-400 group-focus-within:text-[#29a997] transition-colors" />
+                                    <Search className="absolute left-4 w-4 h-4 text-gray-400 group-focus-within:text-[#27b199] transition-colors" />
                                     <input
                                         type="text"
                                         name="keyword"
                                         value={formData.keyword}
                                         onChange={handleInputChange}
                                         placeholder="e.g., Blood, MRI"
-                                        className="w-full pl-11 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#29a997] focus:ring-4 focus:ring-[#29a997]/10 transition-all placeholder:text-gray-300"
+                                        className="w-full pl-11 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#27b199] focus:ring-4 focus:ring-[#27b199]/10 transition-all placeholder:text-gray-300"
                                     />
                                 </div>
                             </div>
@@ -121,14 +121,14 @@ const DirectoryOfServices = () => {
                             <div className="form-element relative group">
                                 <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Test Name</label>
                                 <div className="relative flex items-center">
-                                    <FileText className="absolute left-4 w-4 h-4 text-gray-400 group-focus-within:text-[#29a997] transition-colors" />
+                                    <FileText className="absolute left-4 w-4 h-4 text-gray-400 group-focus-within:text-[#27b199] transition-colors" />
                                     <input
                                         type="text"
                                         name="testName"
                                         value={formData.testName}
                                         onChange={handleInputChange}
                                         placeholder="e.g., Lipid Profile"
-                                        className="w-full pl-11 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#29a997] focus:ring-4 focus:ring-[#29a997]/10 transition-all placeholder:text-gray-300"
+                                        className="w-full pl-11 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#27b199] focus:ring-4 focus:ring-[#27b199]/10 transition-all placeholder:text-gray-300"
                                     />
                                 </div>
                             </div>
@@ -137,12 +137,12 @@ const DirectoryOfServices = () => {
                             <div className="form-element relative group">
                                 <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Disease</label>
                                 <div className="relative flex items-center">
-                                    <Activity className="absolute left-4 w-4 h-4 text-gray-400 group-focus-within:text-[#29a997] transition-colors z-10" />
+                                    <Activity className="absolute left-4 w-4 h-4 text-gray-400 group-focus-within:text-[#27b199] transition-colors z-10" />
                                     <select
                                         name="disease"
                                         value={formData.disease}
                                         onChange={handleInputChange}
-                                        className="w-full pl-11 pr-10 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#29a997] focus:ring-4 focus:ring-[#29a997]/10 transition-all appearance-none cursor-pointer"
+                                        className="w-full pl-11 pr-10 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#27b199] focus:ring-4 focus:ring-[#27b199]/10 transition-all appearance-none cursor-pointer"
                                     >
                                         <option value="" disabled>Select Disease</option>
                                         <option value="diabetes">Diabetes</option>
@@ -158,12 +158,12 @@ const DirectoryOfServices = () => {
                             <div className="form-element relative group">
                                 <label className="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Speciality</label>
                                 <div className="relative flex items-center">
-                                    <Stethoscope className="absolute left-4 w-4 h-4 text-gray-400 group-focus-within:text-[#29a997] transition-colors z-10" />
+                                    <Stethoscope className="absolute left-4 w-4 h-4 text-gray-400 group-focus-within:text-[#27b199] transition-colors z-10" />
                                     <select
                                         name="speciality"
                                         value={formData.speciality}
                                         onChange={handleInputChange}
-                                        className="w-full pl-11 pr-10 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#29a997] focus:ring-4 focus:ring-[#29a997]/10 transition-all appearance-none cursor-pointer"
+                                        className="w-full pl-11 pr-10 py-4 bg-gray-50 border border-gray-200 rounded-2xl text-sm text-[#0f172a] focus:bg-white focus:outline-none focus:border-[#27b199] focus:ring-4 focus:ring-[#27b199]/10 transition-all appearance-none cursor-pointer"
                                     >
                                         <option value="" disabled>Select Speciality</option>
                                         <option value="cardiology">Cardiology</option>
@@ -192,7 +192,7 @@ const DirectoryOfServices = () => {
                             {/* Search Button */}
                             <button
                                 type="submit"
-                                className="w-full sm:w-auto px-10 py-4 bg-[#29a997] hover:bg-[#0f172a] text-white rounded-xl font-bold uppercase tracking-[0.2em] text-[10px] shadow-[0_10px_20px_rgba(41,169,151,0.2)] hover:shadow-[0_10px_20px_rgba(15,23,42,0.2)] transition-all flex items-center justify-center gap-2 group"
+                                className="w-full sm:w-auto px-10 py-4 bg-[#27b199] hover:bg-[#0f172a] text-white rounded-xl font-bold uppercase tracking-[0.2em] text-[10px] shadow-[0_10px_20px_rgba(41,169,151,0.2)] hover:shadow-[0_10px_20px_rgba(15,23,42,0.2)] transition-all flex items-center justify-center gap-2 group"
                             >
                                 Search Directory
                                 <Search className="w-4 h-4 group-hover:scale-110 transition-transform" />

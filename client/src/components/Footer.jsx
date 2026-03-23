@@ -80,11 +80,11 @@ const Footer = () => {
 
             {/* --- Ambient Luxury Background --- */}
             <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
-                style={{ backgroundImage: 'linear-gradient(#29a997 1px, transparent 1px), linear-gradient(to right, #29a997 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
+                style={{ backgroundImage: 'linear-gradient(#27b199 1px, transparent 1px), linear-gradient(to right, #27b199 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
             </div>
             <div 
                 ref={bgGlowRef}
-                className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#29a997] rounded-full blur-[150px] pointer-events-none z-0 opacity-10 translate-x-1/3 -translate-y-1/3"
+                className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#27b199] rounded-full blur-[150px] pointer-events-none z-0 opacity-10 translate-x-1/3 -translate-y-1/3"
             ></div>
 
             <div className="relative z-10 max-w-7xl mx-auto">
@@ -95,7 +95,7 @@ const Footer = () => {
                     {/* Column 1: Quick Links */}
                     <div className="flex flex-col">
                         <h4 className="footer-item text-xl font-light tracking-wide mb-3">Quick Links</h4>
-                        <div className="footer-line h-[2px] w-12 bg-gradient-to-r from-[#29a997] to-transparent mb-8"></div>
+                        <div className="footer-line h-[2px] w-12 bg-gradient-to-r from-[#27b199] to-transparent mb-8"></div>
 
                         <div className="grid grid-cols-2 gap-y-5 gap-x-4">
                             {quickLinks.map((link, index) => (
@@ -104,10 +104,10 @@ const Footer = () => {
                                     href={link.url}
                                     className="footer-item group relative inline-flex items-center text-slate-400 hover:text-white transition-colors text-sm font-light w-fit"
                                 >
-                                    <ChevronRight className="w-3.5 h-3.5 mr-2 text-[#29a997] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                                    <ChevronRight className="w-3.5 h-3.5 mr-2 text-[#27b199] opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                                     <span>{link.name}</span>
                                     {/* Luxury Underline Effect */}
-                                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#29a997] transition-all duration-300 group-hover:w-full"></span>
+                                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#27b199] transition-all duration-300 group-hover:w-full"></span>
                                 </a>
                             ))}
                         </div>
@@ -116,18 +116,18 @@ const Footer = () => {
                     {/* Column 2: National Reference Lab */}
                     <div className="flex flex-col">
                         <h4 className="footer-item text-xl font-light tracking-wide mb-3">National Reference Lab</h4>
-                        <div className="footer-line h-[2px] w-12 bg-gradient-to-r from-[#29a997] to-transparent mb-8"></div>
+                        <div className="footer-line h-[2px] w-12 bg-gradient-to-r from-[#27b199] to-transparent mb-8"></div>
 
                         <div className="flex flex-col gap-6 text-slate-400 text-sm font-light leading-relaxed">
                             <div className="footer-item flex items-start gap-4 group">
-                                <div className="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-[#29a997]/20 group-hover:border-[#29a997]/50 transition-colors mt-0.5 shrink-0">
-                                    <MapPin className="w-4 h-4 text-[#29a997]" />
+                                <div className="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-[#27b199]/20 group-hover:border-[#27b199]/50 transition-colors mt-0.5 shrink-0">
+                                    <MapPin className="w-4 h-4 text-[#27b199]" />
                                 </div>
                                 <span>H.No. 31, Street No. 5,<br />Prakash Nagar, Begumpet,<br />Hyderabad, Telangana - 500016</span>
                             </div>
                             <div className="footer-item flex items-center gap-4 group">
-                                <div className="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-[#29a997]/20 group-hover:border-[#29a997]/50 transition-colors shrink-0">
-                                    <Clock className="w-4 h-4 text-[#29a997]" />
+                                <div className="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-[#27b199]/20 group-hover:border-[#27b199]/50 transition-colors shrink-0">
+                                    <Clock className="w-4 h-4 text-[#27b199]" />
                                 </div>
                                 <span>Monday - Sunday : 24 Hours</span>
                             </div>
@@ -137,22 +137,22 @@ const Footer = () => {
                     {/* Column 3: Corporate Office */}
                     <div className="flex flex-col">
                         <h4 className="footer-item text-xl font-light tracking-wide mb-3">Corporate Office</h4>
-                        <div className="footer-line h-[2px] w-12 bg-gradient-to-r from-[#29a997] to-transparent mb-8"></div>
+                        <div className="footer-line h-[2px] w-12 bg-gradient-to-r from-[#27b199] to-transparent mb-8"></div>
 
                         <div className="flex flex-col gap-6 text-slate-400 text-sm font-light leading-relaxed">
                             <div className="footer-item flex items-start gap-4 group">
-                                <div className="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-[#29a997]/20 group-hover:border-[#29a997]/50 transition-colors mt-0.5 shrink-0">
-                                    <MapPin className="w-4 h-4 text-[#29a997]" />
+                                <div className="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-[#27b199]/20 group-hover:border-[#27b199]/50 transition-colors mt-0.5 shrink-0">
+                                    <MapPin className="w-4 h-4 text-[#27b199]" />
                                 </div>
                                 <span>286/A, Sri Mahaan Heights, 4th floor,<br />Road Number 12, Banjara Hills,<br />Hyderabad, Telangana - 500034</span>
                             </div>
                             <div className="footer-item flex items-center gap-4 group pr-4">
-                                <div className="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-[#29a997]/20 group-hover:border-[#29a997]/50 transition-colors shrink-0">
-                                    <Clock className="w-4 h-4 text-[#29a997]" />
+                                <div className="p-2 rounded-full bg-white/5 border border-white/10 group-hover:bg-[#27b199]/20 group-hover:border-[#27b199]/50 transition-colors shrink-0">
+                                    <Clock className="w-4 h-4 text-[#27b199]" />
                                 </div>
                                 <div className="flex justify-between w-full">
                                     <span>Mon - Sat</span>
-                                    <span className="text-[#29a997]">9:30 - 18:00</span>
+                                    <span className="text-[#27b199]">9:30 - 18:00</span>
                                 </div>
                             </div>
                         </div>
@@ -162,11 +162,11 @@ const Footer = () => {
                     <div className="flex flex-col items-start lg:items-center">
                         <div className="w-full text-left lg:text-center">
                             <h4 className="footer-item text-xl font-light tracking-wide mb-3">Scan for eDOS</h4>
-                            <div className="footer-line h-[2px] w-12 bg-gradient-to-r from-[#29a997] to-transparent mb-8 lg:mx-auto"></div>
+                            <div className="footer-line h-[2px] w-12 bg-gradient-to-r from-[#27b199] to-transparent mb-8 lg:mx-auto"></div>
                         </div>
 
                         {/* Luxury QR Container with Scanner Effect */}
-                        <div className="footer-item relative p-1.5 rounded-2xl bg-gradient-to-br from-white/10 to-white/0 shadow-[0_15px_30px_rgba(0,0,0,0.3)] group overflow-hidden border border-white/10 backdrop-blur-sm hover:border-[#29a997]/50 transition-colors duration-500">
+                        <div className="footer-item relative p-1.5 rounded-2xl bg-gradient-to-br from-white/10 to-white/0 shadow-[0_15px_30px_rgba(0,0,0,0.3)] group overflow-hidden border border-white/10 backdrop-blur-sm hover:border-[#27b199]/50 transition-colors duration-500">
                             
                             <div className="bg-white p-2.5 rounded-xl relative overflow-hidden">
                                 <img
@@ -175,7 +175,7 @@ const Footer = () => {
                                     className="w-32 h-32 object-contain relative z-10"
                                 />
                                 {/* Laser Scanner Line Animation */}
-                                <div className="absolute top-0 left-0 w-full h-[3px] bg-[#29a997] shadow-[0_0_15px_#29a997] opacity-60 z-20 animate-[scan_3s_ease-in-out_infinite]"></div>
+                                <div className="absolute top-0 left-0 w-full h-[3px] bg-[#27b199] shadow-[0_0_15px_#27b199] opacity-60 z-20 animate-[scan_3s_ease-in-out_infinite]"></div>
                             </div>
                         </div>
                     </div>
@@ -185,7 +185,7 @@ const Footer = () => {
                 {/* --- MIDDLE TIER: Accreditations --- */}
                 <div className="footer-accredit flex flex-col md:flex-row items-center justify-between gap-8 py-10 border-t border-b border-white/10 mb-10">
                     <div className="flex items-center gap-4">
-                        <div className="h-[2px] w-10 bg-[#29a997] hidden md:block"></div>
+                        <div className="h-[2px] w-10 bg-[#27b199] hidden md:block"></div>
                         <h3 className="text-sm font-bold tracking-[0.3em] uppercase text-slate-300">Accreditations</h3>
                     </div>
                     
@@ -206,7 +206,7 @@ const Footer = () => {
                     
                     {/* Copyright */}
                     <div className="text-slate-500 text-xs font-light tracking-widest uppercase">
-                        &copy; {new Date().getFullYear()} <span className="text-[#29a997] font-bold">TrustLab Diagnostics.</span> All rights reserved.
+                        &copy; {new Date().getFullYear()} <span className="text-[#27b199] font-bold">TrustLab Diagnostics.</span> All rights reserved.
                     </div>
 
                     {/* Social Connect */}
@@ -217,7 +217,7 @@ const Footer = () => {
                             <a 
                                 key={i} 
                                 href="#" 
-                                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:bg-[#29a997] hover:border-[#29a997] hover:shadow-[0_0_15px_rgba(41,169,151,0.5)] transition-all duration-300 group"
+                                className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-slate-300 hover:text-white hover:bg-[#27b199] hover:border-[#27b199] hover:shadow-[0_0_15px_rgba(41,169,151,0.5)] transition-all duration-300 group"
                             >
                                 <Icon className="w-4 h-4 group-hover:scale-110 transition-transform" />
                             </a>

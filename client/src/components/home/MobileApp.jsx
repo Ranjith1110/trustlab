@@ -62,7 +62,7 @@ const MobileApp = () => {
             {/* Subtle Background Accent Blob */}
             <div 
                 ref={blobRef}
-                className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#29a997]/5 rounded-full blur-[120px] pointer-events-none z-0 -translate-y-1/2 -translate-x-1/4"
+                className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-[#27b199]/5 rounded-full blur-[120px] pointer-events-none z-0 -translate-y-1/2 -translate-x-1/4"
             ></div>
 
             <div className="relative z-10 max-w-7xl mx-auto w-full">
@@ -75,7 +75,7 @@ const MobileApp = () => {
                             className="relative w-full max-w-[320px] lg:max-w-[400px]"
                         >
                             {/* Decorative backing glow for the phone */}
-                            <div className="absolute inset-0 bg-gradient-to-tr from-[#29a997]/20 to-transparent rounded-[3rem] blur-2xl transform translate-y-10 scale-90 -z-10"></div>
+                            <div className="absolute inset-0 bg-gradient-to-tr from-[#27b199]/20 to-transparent rounded-[3rem] blur-2xl transform translate-y-10 scale-90 -z-10"></div>
                             
                             {/* App Mockup Image */}
                             <img
@@ -91,8 +91,8 @@ const MobileApp = () => {
 
                         {/* Coming Soon Badge */}
                         <div className="app-anim flex items-center gap-3 mb-6">
-                            <div className="h-[2px] w-8 bg-[#29a997]" />
-                            <span className="text-[#29a997] text-[10px] font-bold tracking-[0.3em] uppercase flex items-center gap-2">
+                            <div className="h-[2px] w-8 bg-[#27b199]" />
+                            <span className="text-[#27b199] text-[10px] font-bold tracking-[0.3em] uppercase flex items-center gap-2">
                                 <Smartphone className="w-4 h-4" /> Coming Soon
                             </span>
                         </div>
@@ -112,7 +112,7 @@ const MobileApp = () => {
                             <div className="flex flex-col sm:flex-row gap-4">
 
                                 {/* App Store Button */}
-                                <button className="group relative flex items-center justify-center gap-4 bg-[#0f172a] hover:bg-[#29a997] text-white rounded-2xl px-8 py-4 transition-all duration-300 w-full sm:w-auto text-left shadow-[0_10px_20px_rgba(15,23,42,0.1)] hover:shadow-[0_15px_30px_rgba(41,169,151,0.25)]">
+                                <button className="group relative flex items-center justify-center gap-4 bg-[#0f172a] hover:bg-[#27b199] text-white rounded-2xl px-8 py-4 transition-all duration-300 w-full sm:w-auto text-left shadow-[0_10px_20px_rgba(15,23,42,0.1)] hover:shadow-[0_15px_30px_rgba(41,169,151,0.25)]">
                                     <Apple className="w-8 h-8" />
                                     <div>
                                         <span className="block text-[9px] text-white/70 uppercase tracking-widest leading-none mb-1">Coming to</span>
@@ -121,7 +121,7 @@ const MobileApp = () => {
                                 </button>
 
                                 {/* Google Play Button */}
-                                <button className="group relative flex items-center justify-center gap-4 bg-[#0f172a] hover:bg-[#29a997] text-white rounded-2xl px-8 py-4 transition-all duration-300 w-full sm:w-auto text-left shadow-[0_10px_20px_rgba(15,23,42,0.1)] hover:shadow-[0_15px_30px_rgba(41,169,151,0.25)]">
+                                <button className="group relative flex items-center justify-center gap-4 bg-[#0f172a] hover:bg-[#27b199] text-white rounded-2xl px-8 py-4 transition-all duration-300 w-full sm:w-auto text-left shadow-[0_10px_20px_rgba(15,23,42,0.1)] hover:shadow-[0_15px_30px_rgba(41,169,151,0.25)]">
                                     <Play className="w-7 h-7 ml-1" />
                                     <div>
                                         <span className="block text-[9px] text-white/70 uppercase tracking-widest leading-none mb-1">Coming to</span>
