@@ -70,12 +70,8 @@ const QualityCommitment = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative py-24 lg:py-32 px-6 bg-[#f8fafc] overflow-hidden flex items-center min-h-[80vh]">
+        <section ref={sectionRef} className="relative py-24 lg:py-32 px-6 overflow-hidden flex items-center min-h-[80vh]">
 
-            {/* Subtle Background Pattern */}
-            <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none"
-                style={{ backgroundImage: 'linear-gradient(#29a997 1px, transparent 1px), linear-gradient(to right, #29a997 1px, transparent 1px)', backgroundSize: '60px 60px' }}>
-            </div>
 
             <div className="relative z-10 max-w-7xl mx-auto w-full">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">

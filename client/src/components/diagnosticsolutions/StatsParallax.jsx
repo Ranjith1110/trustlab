@@ -7,8 +7,8 @@ gsap.registerPlugin(ScrollTrigger);
 
 const StatsParallax = () => {
     const sectionRef = useRef(null);
+    const statsWrapperRef = useRef(null);
     const videoRef = useRef(null);
-    const contentRef = useRef(null);
     const numberRefs = useRef([]);
 
     const stats = [
@@ -24,7 +24,7 @@ const StatsParallax = () => {
         }
     };
 
-    // Force video to play on mount (helps bypass strict browser policies)
+    // Force video to play on mount
     useEffect(() => {
         if (videoRef.current) {
             videoRef.current.defaultMuted = true;
@@ -52,55 +52,61 @@ const StatsParallax = () => {
 
         const ctx = gsap.context(() => {
             
-            // 2. Subtle Parallax for the Content (Creates depth without zooming the video)
-            gsap.to(contentRef.current, {
-                y: -50,
-                ease: "none",
+            // 2. The Master Scrub Timeline
+            const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: sectionRef.current,
-                    start: "top bottom",
-                    end: "bottom top",
-                    scrub: true,
+                    start: "center center", // Pin exactly in the center of the screen
+                    end: "+=400%", // The user scrolls for 4 screen heights to complete the animation
+                    pin: true, // This locks the left side in place!
+                    scrub: 1, // Smoothly links the animation to the scroll bar
                 }
             });
 
-            // 3. Simple Header Fade Up
-            gsap.fromTo(".stats-header",
-                { y: 30, opacity: 0 },
-                {
-                    y: 0, opacity: 1, duration: 1, ease: "power3.out",
-                    scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
+            // Create an array to hold the counter values
+            const counters = stats.map(() => ({ val: 0 }));
+
+            // Step 1: Count up the first stat immediately as pinning starts
+            tl.to(counters[0], { 
+                val: stats[0].target, 
+                duration: 1, 
+                onUpdate: () => {
+                    if(numberRefs.current[0]) numberRefs.current[0].innerText = Math.floor(counters[0].val).toLocaleString('en-IN');
                 }
-            );
-
-            // 4. Staggered Stat Item Reveal
-            gsap.fromTo(".stat-item",
-                { y: 30, opacity: 0 },
-                {
-                    y: 0, opacity: 1, stagger: 0.1, duration: 1, ease: "power3.out",
-                    scrollTrigger: { trigger: sectionRef.current, start: "top 75%" }
-                }
-            );
-
-            // 5. Number Counter Animation
-            numberRefs.current.forEach((numNode, index) => {
-                const targetVal = stats[index].target;
-                const counter = { val: 0 };
-
-                gsap.to(counter, {
-                    val: targetVal,
-                    duration: 2.5,
-                    ease: "expo.out",
-                    scrollTrigger: {
-                        trigger: sectionRef.current,
-                        start: "top 75%",
-                    },
-                    onUpdate: () => {
-                        // Formats the numbers with commas (e.g. 9,80,000)
-                        numNode.innerText = Math.floor(counter.val).toLocaleString('en-IN');
-                    }
-                });
             });
+
+            // Step 2: Slide wrapper up by 25% (revealing stat 2) and count it up
+            tl.to(statsWrapperRef.current, { yPercent: -25, duration: 1.5, ease: "power2.inOut" }, "+=0.2")
+              .to(counters[1], { 
+                  val: stats[1].target, 
+                  duration: 1, 
+                  onUpdate: () => {
+                      if(numberRefs.current[1]) numberRefs.current[1].innerText = Math.floor(counters[1].val).toLocaleString('en-IN');
+                  }
+              }, "<0.5"); // Start counting halfway through the slide
+
+            // Step 3: Slide wrapper up to 50% (revealing stat 3) and count it up
+            tl.to(statsWrapperRef.current, { yPercent: -50, duration: 1.5, ease: "power2.inOut" }, "+=0.2")
+              .to(counters[2], { 
+                  val: stats[2].target, 
+                  duration: 1, 
+                  onUpdate: () => {
+                      if(numberRefs.current[2]) numberRefs.current[2].innerText = Math.floor(counters[2].val).toLocaleString('en-IN');
+                  }
+              }, "<0.5");
+
+            // Step 4: Slide wrapper up to 75% (revealing stat 4) and count it up
+            tl.to(statsWrapperRef.current, { yPercent: -75, duration: 1.5, ease: "power2.inOut" }, "+=0.2")
+              .to(counters[3], { 
+                  val: stats[3].target, 
+                  duration: 1, 
+                  onUpdate: () => {
+                      if(numberRefs.current[3]) numberRefs.current[3].innerText = Math.floor(counters[3].val).toLocaleString('en-IN');
+                  }
+              }, "<0.5");
+
+            // End padding so it doesn't unpin too abruptly
+            tl.to({}, { duration: 0.5 });
 
         }, sectionRef);
 
@@ -111,77 +117,91 @@ const StatsParallax = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative w-full py-20 md:py-32 bg-[#fcfdfe] overflow-hidden">
+        // min-h-[100dvh] ensures it perfectly fits mobile and desktop screens when pinned
+        <section ref={sectionRef} className="relative w-full flex items-center justify-center min-h-[100dvh] py-10 px-4 md:px-6 overflow-hidden">
             
-            <div className="relative px-4 md:px-6 w-full">
+            {/* --- THE MASTER CARD --- */}
+            <div className="relative w-full max-w-7xl mx-auto h-[75dvh] max-h-[800px] rounded-[2rem] md:rounded-[3rem] overflow-hidden">
                 
-                {/* --- CONTAINED VIDEO CARD --- */}
-                {/* This wrapper keeps the video neat, perfectly proportioned, and "not full screen" */}
-                <div className="relative w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden shadow-2xl bg-[#0f172a] flex flex-col justify-center py-24 px-4 md:px-12 min-h-[500px]">
-                    
-                    {/* Background Video (100% of container, perfectly fitted) */}
-                    <video
-                        ref={videoRef}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        loop
-                        playsInline
-                        muted
-                        poster="/diagnosticsolutions/bgintro.webp"
-                    >
-                        {/* Replace with your background video path */}
-                        <source src="/diagnosticsolutions/fun2.mp4" type="video/mp4" />
-                    </video>
-                    
-                    {/* Dark Overlay to make text perfectly readable */}
-                    <div className="absolute inset-0 bg-[#0f172a]/75 mix-blend-multiply"></div>
+                {/* Background Video */}
+                <video
+                    ref={videoRef}
+                    className="absolute inset-0 w-full h-full object-cover"
+                    loop
+                    playsInline
+                    muted
+                    poster="/diagnosticsolutions/bgintro.webp"
+                >
+                    <source src="/diagnosticsolutions/fun2.mp4" type="video/mp4" />
+                </video>
+                
+                {/* Deep Blue Brand Overlay */}
+                <div className="absolute inset-0 bg-[#000]/45 mix-blend-multiply"></div>
 
-                    {/* --- PARALLAX CONTENT LAYER --- */}
-                    <div ref={contentRef} className="relative z-10 w-full">
+                {/* --- CARD CONTENT --- */}
+                <div className="relative z-10 w-full h-full flex flex-col lg:flex-row p-8 md:p-12 lg:p-16 gap-8 lg:gap-0">
+                    
+                    {/* LEFT COLUMN: Sticky Headings */}
+                    <div className="flex-none lg:flex-1 w-full lg:w-1/2 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/20 pb-8 lg:pb-0 lg:pr-12">
                         
-                        {/* Heading Section */}
-                        <div className="stats-header text-center mb-16 md:mb-24">
-                            <div className="flex items-center justify-center gap-4 mb-5">
-                                <div className="h-[1px] w-8 bg-[#29a997]" />
-                                <span className="text-[#29a997] text-xs font-bold tracking-[0.3em] uppercase">
-                                    Our Impact
-                                </span>
-                                <div className="h-[1px] w-8 bg-[#29a997]" />
-                            </div>
-                            
-                            <h2 className="text-white text-3xl md:text-5xl font-light leading-tight">
-                                Accelerating patient care begins <br className="hidden md:block" />
-                                in the <span className="font-bold text-[#29a997]">laboratory.</span>
-                            </h2>
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="h-[2px] w-8 bg-[#27b199]" />
+                            <span className="text-[#27b199] text-xs font-bold tracking-[0.3em] uppercase">
+                                Our Impact
+                            </span>
                         </div>
+                        
+                        <h2 className="text-white text-3xl md:text-5xl font-light leading-tight">
+                            Accelerating patient care begins <br className="hidden lg:block" />
+                            in the <span className="font-bold text-[#feed02]">laboratory.</span>
+                        </h2>
 
-                        {/* Stats Grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+                        <p className="text-slate-300 mt-6 text-sm md:text-base font-light max-w-sm">
+                            Every number represents a life we've touched with precise, timely diagnostics and unwavering care.
+                        </p>
+                    </div>
+
+                    {/* RIGHT COLUMN: The Scrolling Stats Frame */}
+                    {/* This column is relative and overflow-hidden to act as a "window" */}
+                    <div className="flex-1 w-full lg:w-1/2 overflow-hidden relative lg:pl-12">
+                        
+                        {/* The Wrapper that slides up on scroll. Height is 400% because there are 4 stats */}
+                        <div 
+                            ref={statsWrapperRef}
+                            className="absolute top-0 left-0 w-full h-[400%] flex flex-col"
+                        >
                             {stats.map((stat, index) => (
-                                <div key={index} className="stat-item flex flex-col items-center justify-center text-center pt-8 sm:pt-0">
+                                // Each stat takes exactly 25% of the 400% wrapper, meaning it fills the "window" perfectly
+                                <div key={index} className="w-full h-[25%] flex flex-col justify-center">
                                     
                                     {/* Animated Number */}
-                                    <div className="flex items-start justify-center mb-1 text-white">
+                                    <div className="flex items-start">
                                         <span 
                                             ref={addToNumberRefs} 
-                                            className="text-4xl lg:text-5xl xl:text-6xl font-light tracking-tight"
+                                            className="text-white text-6xl md:text-8xl lg:text-[7rem] font-light tracking-tighter leading-none"
                                         >
                                             0
                                         </span>
-                                        <span className="text-[#29a997] text-2xl lg:text-3xl font-bold ml-1">
+                                        <span className="text-[#27b199] text-4xl md:text-6xl lg:text-7xl font-bold ml-2 -mt-2">
                                             {stat.suffix}
                                         </span>
                                     </div>
                                     
                                     {/* Stat Label */}
-                                    <p className="text-slate-400 text-[11px] md:text-xs font-bold tracking-widest uppercase mt-3">
-                                        {stat.label}
-                                    </p>
+                                    <div className="flex items-center gap-4 mt-6">
+                                        <div className="h-[2px] w-10 bg-[#feed02]"></div>
+                                        <p className="text-slate-300 text-xs md:text-sm font-bold tracking-widest uppercase">
+                                            {stat.label}
+                                        </p>
+                                    </div>
+
                                 </div>
                             ))}
                         </div>
-                    </div>
 
+                    </div>
                 </div>
+
             </div>
         </section>
     );

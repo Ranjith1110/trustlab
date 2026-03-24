@@ -1,49 +1,51 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
-import { ArrowRight, ShieldCheck, Activity, FileText } from 'lucide-react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { Search, FlaskConical, Package, Tag } from 'lucide-react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
     const sectionRef = useRef(null);
-    const imageRef = useRef(null);
-    const badgeRef = useRef(null);
-    const scannerRef = useRef(null);
+    const bannerRef = useRef(null);
+    const floatBarRef = useRef(null);
+    const blob1Ref = useRef(null);
+    const blob2Ref = useRef(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline();
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top 85%",
+                }
+            });
 
-            // 1. Clean, simple staggered fade-up for content
-            tl.fromTo(".hero-elem", 
-                { y: 30, opacity: 0 }, 
-                { y: 0, opacity: 1, stagger: 0.15, duration: 1, ease: "power3.out", delay: 0.2 }
+            // 1. Reveal the main banner card
+            tl.fromTo(bannerRef.current,
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, duration: 1, ease: "power3.out" }
             )
-            // 2. Smooth fade-in for the image
-            .fromTo(imageRef.current,
-                { opacity: 0, x: 20 },
-                { opacity: 1, x: 0, duration: 1.2, ease: "power3.out" },
-                "-=0.8"
-            )
-            // 3. Pop-in for the floating badge
-            .fromTo(badgeRef.current,
-                { opacity: 0, scale: 0.9, y: 20 },
-                { opacity: 1, scale: 1, y: 0, duration: 0.8, ease: "back.out(1.5)" },
+            // 2. Pop-in the floating search bar
+            .fromTo(floatBarRef.current,
+                { y: 30, opacity: 0, scale: 0.95 },
+                { y: 0, opacity: 1, scale: 1, duration: 0.8, ease: "back.out(1.2)" },
                 "-=0.6"
+            )
+            // 3. Fade in the promo text below
+            .fromTo(".promo-text",
+                { opacity: 0 },
+                { opacity: 1, duration: 0.6 },
+                "-=0.4"
             );
 
-            // 4. Subtle continuous animations
-            gsap.to(imageRef.current, {
-                y: -10, duration: 4, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 1
+            // Ambient background blob animations using your brand colors
+            gsap.to(blob1Ref.current, {
+                x: 30, y: 20, scale: 1.1, duration: 4, ease: "sine.inOut", yoyo: true, repeat: -1
             });
-            
-            gsap.to(badgeRef.current, {
-                y: -8, duration: 3, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 0.5
+            gsap.to(blob2Ref.current, {
+                x: -30, y: -20, scale: 1.1, duration: 5, ease: "sine.inOut", yoyo: true, repeat: -1, delay: 0.5
             });
-
-            // Gentle medical scanner line loop
-            gsap.fromTo(scannerRef.current,
-                { top: "10%", opacity: 0 },
-                { top: "90%", opacity: 0.8, duration: 3, ease: "linear", yoyo: true, repeat: -1 }
-            );
 
         }, sectionRef);
 
@@ -51,77 +53,77 @@ const Hero = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative w-full min-h-[90vh] pt-32 pb-20 px-6 bg-white overflow-hidden flex items-center">
+        <section ref={sectionRef} className="relative w-full py-16 md:py-32 px-4 flex flex-col items-center justify-center overflow-hidden">
             
-            {/* Very subtle background glow for depth, perfectly neat */}
-            <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-[#29a997]/5 rounded-full blur-[100px] pointer-events-none z-0"></div>
-
-            <div className="relative z-10 max-w-7xl mx-auto w-full">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            <div className="relative w-full max-w-6xl mb-12 mt-10 md:mt-0">
+                
+                <div ref={bannerRef} className="relative bg-white rounded-[2rem] md:rounded-[3rem] p-8 md:p-14 flex flex-col md:flex-row items-center justify-between border border-slate-100 shadow-[0_15px_50px_rgba(31,43,123,0.06)] overflow-hidden">
                     
-                    {/* --- LEFT COLUMN: Clean Content --- */}
-                    <div className="flex flex-col items-center text-center lg:items-start lg:text-left z-20">
+                    <div ref={blob1Ref} className="absolute top-0 left-0 w-64 h-64 bg-[#feed02]/20 rounded-full blur-[80px] pointer-events-none"></div>
+                    <div ref={blob2Ref} className="absolute bottom-0 right-0 w-80 h-80 bg-[#27b199]/15 rounded-full blur-[100px] pointer-events-none"></div>
 
-                        {/* Neat, standard heading format */}
-                        <h1 className="hero-elem text-[#0f172a] text-4xl sm:text-4xl md:text-5xl font-light leading-tight mb-6">
-                            A healthy person may have a thousand wishes. <br className="hidden lg:block" />
-                            But a sick person has only ONE... <br />
-                            <span className="font-bold text-[#29a997] mt-2 inline-block">
-                                To Get Well SOON!
-                            </span>
-                        </h1>
-
-                        <p className="hero-elem text-slate-500 text-base lg:text-md font-light leading-relaxed max-w-lg mb-10">
-                            TrustLab provides precision molecular diagnostics and real-time health monitoring, giving you the clarity and care you need to prioritize what truly matters.
+                    <div className="relative z-10 flex flex-col items-start text-left w-full md:w-1/2 mb-10 md:mb-0">
+                        <h2 className="text-[#1F2B7B] text-2xl md:text-3xl lg:text-4xl font-light mb-2 leading-tight tracking-tight">
+                            A healthy person may have a thousand wishes.
+                        </h2>
+                        
+                        <p className="text-[#27b199] text-xl md:text-2xl font-bold mb-2">
+                            But a sick person has only ONE...
                         </p>
-
-                        {/* Standard, clean buttons matching the rest of the site */}
-                        <div className="hero-elem flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-                            <button className="w-full sm:w-auto px-8 py-4 bg-[#0f172a] hover:bg-[#29a997] text-white rounded-xl font-bold uppercase tracking-widest text-xs transition-colors flex items-center justify-center gap-2 shadow-lg">
-                                Book Your Test 
-                                <ArrowRight className="w-4 h-4" />
-                            </button>
-                        </div>
+                        
+                        <h3 className="text-[#1F2B7B] text-3xl md:text-4xl lg:text-5xl font-black mb-10 tracking-tight">
+                            To Get Well <span className="relative inline-block">
+                                SOON!
+                                <span className="absolute bottom-1 left-0 w-full h-2 md:h-3 bg-[#feed02]/60 -z-10 rounded-full"></span>
+                            </span>
+                        </h3>
+                        
+                        <button className="bg-[#1F2B7B] hover:bg-[#27b199] text-white px-8 py-3.5 rounded-full font-bold tracking-wide text-sm shadow-[0_8px_20px_rgba(31,43,123,0.25)] hover:shadow-[0_10px_25px_rgba(39,177,153,0.35)] transition-all hover:-translate-y-0.5">
+                            Book a Home Test
+                        </button>
                     </div>
 
-                    {/* --- RIGHT COLUMN: Neat Image Container --- */}
-                    <div className="relative flex justify-center lg:justify-end w-full mt-10 lg:mt-0">
-                        
-                        <div 
-                            ref={imageRef}
-                            className="relative w-full max-w-[450px] lg:max-w-[500px] aspect-square lg:aspect-[4/5] rounded-[2rem] overflow-hidden shadow-2xl"
-                        >
-                            {/* Main Image */}
+                    <div className="relative z-10 w-full md:w-[45%] flex justify-end">
+                        <div className="relative w-full aspect-[4/3] md:aspect-square max-w-[400px]">
+                            <div className="absolute inset-0 border-l-[6px] border-[#feed02] rounded-l-[5rem] md:rounded-l-[8rem] -left-2 z-20 pointer-events-none"></div>
+                            
                             <img 
                                 src="/diagnosticsolutions/banner.jpg" 
-                                alt="Diagnostic Analysis" 
-                                className="w-full h-full object-cover"
+                                alt="Patient Care and Diagnostics" 
+                                className="w-full h-full object-cover rounded-l-[5rem] md:rounded-l-[8rem] rounded-r-3xl shadow-lg"
                             />
-
-                            {/* Clean, subtle scanner line over the image */}
-                            <div 
-                                ref={scannerRef}
-                                className="absolute left-0 w-full h-[2px] bg-[#29a997] shadow-[0_0_15px_#29a997] z-20 pointer-events-none"
-                            ></div>
                         </div>
-
-                        {/* Single, clean floating trust badge */}
-                        <div 
-                            ref={badgeRef}
-                            className="absolute bottom-6 -left-4 lg:-left-10 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4 z-30"
-                        >
-                            <div className="w-12 h-12 rounded-xl bg-[#29a997]/10 flex items-center justify-center shrink-0">
-                                <ShieldCheck className="w-6 h-6 text-[#29a997]" />
-                            </div>
-                            <div>
-                                <p className="text-[#0f172a] font-bold text-sm leading-none mb-1">NABL Accredited</p>
-                                <p className="text-slate-500 text-[10px] uppercase tracking-wider font-bold">100% Accurate Data</p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
+
+                <div 
+                    ref={floatBarRef} 
+                    className="absolute -bottom-8 md:-bottom-10 left-1/2 -translate-x-1/2 w-[95%] md:w-auto bg-white/95 backdrop-blur-xl p-2 md:p-3 rounded-2xl md:rounded-full shadow-[0_20px_50px_-10px_rgba(31,43,123,0.15)] border border-slate-100 flex flex-col md:flex-row items-center gap-3 md:gap-4 z-30"
+                >
+                    {/* Search Input */}
+                    <div className="relative w-full md:w-72 flex items-center bg-white border border-slate-200 rounded-full px-5 py-3 hover:border-[#27b199] transition-colors">
+                        <input 
+                            type="text" 
+                            placeholder="Search for tests..." 
+                            className="w-full bg-transparent border-none outline-none text-[#1F2B7B] text-sm placeholder:text-slate-400 pr-8"
+                        />
+                        <Search className="absolute right-4 w-4 h-4 text-[#27b199]" />
+                    </div>
+
+                    {/* Action Buttons Container */}
+                    <div className="flex items-center gap-3 w-full md:w-auto">
+                        <button className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-[#1F2B7B] hover:bg-[#151d54] text-white px-6 py-3 rounded-full font-bold text-sm shadow-[0_8px_15px_rgba(31,43,123,0.2)] hover:shadow-[0_10px_20px_rgba(31,43,123,0.3)] hover:-translate-y-0.5 transition-all">
+                            <span>Lab Tests</span>
+                        </button>
+
+                        <button className="flex-1 md:flex-none flex items-center justify-center gap-2 bg-[#27b199] hover:bg-[#208a7b] text-white px-6 py-3 rounded-full font-bold text-sm shadow-[0_8px_15px_rgba(39,177,153,0.2)] hover:shadow-[0_10px_20px_rgba(39,177,153,0.3)] hover:-translate-y-0.5 transition-all">
+                            <span>Checkups</span>
+                        </button>
+                    </div>
+                </div>
+
             </div>
+
         </section>
     );
 };

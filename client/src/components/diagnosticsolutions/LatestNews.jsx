@@ -87,10 +87,7 @@ const LatestNews = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative py-20 md:py-32 bg-[#fcfdfe] overflow-hidden">
-            
-            {/* Very subtle background depth */}
-            <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#f1f5f9] to-transparent pointer-events-none opacity-50 z-0"></div>
+        <section ref={sectionRef} className="relative py-20 md:py-32 overflow-hidden">
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
                 
