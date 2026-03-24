@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
@@ -12,7 +12,7 @@ const Hero = () => {
     const imageParallaxRef = useRef(null);
     const imageContainerRef = useRef(null);
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         const lenis = new Lenis();
         let rafId;
 
@@ -84,8 +84,8 @@ const Hero = () => {
 
         return () => {
             cancelAnimationFrame(rafId);
-            lenis.destroy();            
-            ctx.revert();               
+            lenis.destroy();
+            ctx.revert();
         };
     }, []);
 
@@ -178,18 +178,18 @@ const Hero = () => {
                 ))}
             </div>
 
-            <div className="final-section absolute inset-0 flex flex-col items-center justify-center z-40 bg-[#f8fafc]/95 backdrop-blur-lg px-6 text-center">
-                <div className="p-5 rounded-full bg-white shadow-xl mb-8 border border-slate-100">
+            <div className="final-section absolute inset-0 flex flex-col items-center justify-center z-40 bg-[#f8fafc]/95 backdrop-blur-lg px-6 text-center pointer-events-none">
+                <div className="p-5 rounded-full bg-white shadow-xl mb-8 border border-slate-100 pointer-events-auto">
                     <ShieldCheck className="w-12 h-12 text-[#27b199]" />
                 </div>
-                <h2 className="text-[#0f172a] text-3xl md:text-6xl font-light mb-6">
+                <h2 className="text-[#0f172a] text-3xl md:text-6xl font-light mb-6 pointer-events-auto">
                     Don't wait to find out <br />
                     <span className="font-bold relative inline-block">
                         what's hiding within.
                         <span className="absolute bottom-1 left-0 w-full h-3 bg-[#f5ed00]/40 -z-10 rounded-full"></span>
                     </span>
                 </h2>
-                <p className="text-slate-500 mb-10 max-w-lg text-sm md:text-base">
+                <p className="text-slate-500 mb-10 max-w-lg text-sm md:text-base pointer-events-auto">
                     Advanced molecular diagnostics and personalized health monitoring for those who value clarity and longevity.
                 </p>
                 <button className="group relative px-10 py-4 bg-[#0f172a] text-white rounded-full overflow-hidden transition-all shadow-xl hover:shadow-[0_10px_30px_rgba(41,169,151,0.3)] pointer-events-auto cursor-pointer">

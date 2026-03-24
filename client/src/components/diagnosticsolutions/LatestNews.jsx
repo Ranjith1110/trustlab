@@ -15,21 +15,21 @@ const LatestNews = () => {
             date: "22 Aug, 2020",
             title: "9 vital women's health screenings",
             desc: "In this article, we'll delve into the essential health screenings every woman should undergo to safeguard her health.",
-            img: "/latestdemo.avif" 
+            img: "/diagnosticsolutions/latestdemo.avif" 
         },
         {
             id: 2,
             date: "15 Jul, 2020",
             title: "Eyeing a healthcare career? Here are the trending roles",
             desc: "The Indian healthcare sector has seen massive growth in the past few years and is becoming an economic backbone of the nation.",
-            img: "/latestdemo.avif" 
+            img: "/diagnosticsolutions/blogg2.webp" 
         },
         {
             id: 3,
             date: "05 Jan, 2020",
             title: "Important Tests to Undertake to Detect Diseases like AIDS",
             desc: "Early detection of AIDS (Acquired Immunodeficiency Syndrome) is crucial for effective treatment and long-term management.",
-            img: "/latestdemo.avif" 
+            img: "/diagnosticsolutions/blogg3.webp" 
         }
     ];
 
