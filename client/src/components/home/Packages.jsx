@@ -110,7 +110,7 @@ const Packages = () => {
     }, []);
 
     return (
-        <section ref={sectionRef} className="relative w-full py-20 md:py-28 overflow-hidden">
+        <section ref={sectionRef} className="relative w-full py-20 md:py-32 overflow-hidden">
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
@@ -122,8 +122,8 @@ const Packages = () => {
                 </div>
 
                 {/* --- SWIPER SLIDER SECTION --- */}
+                {/* Removed bottom padding so the arrows center exactly on the cards */}
                 <div className="relative w-full group">
-
                     <Swiper
                         modules={[Navigation, Pagination]}
                         spaceBetween={24}
@@ -143,16 +143,17 @@ const Packages = () => {
                             768: { slidesPerView: 2 },       // iPad: 2 Cards
                             1024: { slidesPerView: 3 },      // Desktop: 3 Cards
                         }}
-                        className="w-full !pb-16 px-2"
+                        className="w-full py-4 px-2"
                     >
                         {packages.map((pkg) => (
-                            <SwiperSlide key={pkg.id} className="py-4">
+                            <SwiperSlide key={pkg.id} className="!h-auto flex">
+                                {/* !h-auto and flex force all slides to match the height of the tallest content */}
 
                                 {/* --- PACKAGE CARD --- */}
-                                <div className="pkg-card bg-white rounded-3xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col h-full hover:shadow-[0_15px_35px_rgba(0,0,0,0.08)] transition-shadow duration-300">
+                                <div className="pkg-card bg-white rounded-3xl w-full overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.04)] border border-slate-100 flex flex-col h-full hover:-translate-y-1 hover:shadow-[0_15px_35px_rgba(0,0,0,0.08)] transition-all duration-300">
 
                                     {/* Top Half: Green Background */}
-                                    <div className="bg-gradient-to-br from-[#2f8a75] to-[#27B199] p-6 text-white relative h-44 flex flex-col justify-end">
+                                    <div className="bg-gradient-to-br from-[#2f8a75] to-[#27B199] p-6 text-white relative h-44 flex flex-col justify-end shrink-0">
 
                                         {/* Corner Tag */}
                                         <div className="absolute top-4 right-6 bg-[#185e4f]/40 backdrop-blur-sm px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase">
@@ -197,7 +198,7 @@ const Packages = () => {
                                             </div>
                                         </div>
 
-                                        {/* Action Buttons */}
+                                        {/* Action Buttons (Pushed to bottom using mt-auto) */}
                                         <div className="flex gap-4 mt-auto">
                                             <button className="flex-1 py-3 px-2 rounded-xl border border-[#27B199] text-[#27B199] font-bold text-sm hover:bg-teal-50 transition-colors">
                                                 View Details
@@ -213,32 +214,33 @@ const Packages = () => {
                         ))}
                     </Swiper>
 
-                    {/* Navigation Buttons */}
-                    <button className="swiper-nav-btn swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 xl:-translate-x-14 z-10 w-12 h-12 bg-white rounded-full shadow-md border border-slate-100 flex items-center justify-center text-slate-600 hover:text-[#27B199] transition-all cursor-pointer hidden md:flex hover:scale-105">
+                    {/* Navigation Buttons (Now perfectly centered with the cards) */}
+                    <button className="swiper-nav-btn swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 xl:-translate-x-14 z-10 w-12 h-12 bg-white rounded-full shadow-md border border-slate-100 flex items-center justify-center text-slate-600 hover:text-[#27B199] hover:border-[#27B199] transition-all cursor-pointer hidden md:flex hover:scale-105">
                         <ChevronLeft className="w-6 h-6" strokeWidth={1.5} />
                     </button>
-                    <button className="swiper-nav-btn swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 xl:translate-x-14 z-10 w-12 h-12 bg-white rounded-full shadow-md border border-slate-100 flex items-center justify-center text-slate-600 hover:text-[#27B199] transition-all cursor-pointer hidden md:flex hover:scale-105">
+                    <button className="swiper-nav-btn swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 xl:translate-x-14 z-10 w-12 h-12 bg-white rounded-full shadow-md border border-slate-100 flex items-center justify-center text-slate-600 hover:text-[#27B199] hover:border-[#27B199] transition-all cursor-pointer hidden md:flex hover:scale-105">
                         <ChevronRight className="w-6 h-6" strokeWidth={1.5} />
                     </button>
-
-                    {/* Pagination Container matching reference */}
-                    <div className="flex justify-center items-center gap-2 mt-4">
-                        <div className="bg-slate-500 text-white text-[10px] font-bold px-3 py-1 rounded-full mr-2">
-                            {activeIndex + 1}/{packages.length}
-                        </div>
-                        <div className="custom-swiper-pagination flex items-center gap-2"></div>
-                    </div>
-
                 </div>
+
+                {/* --- PAGINATION CONTAINER --- */}
+                {/* Moved outside the relative Swiper wrapper so it matches the Testimonials layout exactly */}
+                <div className="flex justify-center items-center gap-3 mt-8">
+                    <div className="bg-slate-500 text-white text-[11px] font-bold px-3 py-1 rounded-full flex items-center justify-center">
+                        {activeIndex + 1}/{packages.length}
+                    </div>
+                    <div className="custom-swiper-pagination flex items-center gap-1.5"></div>
+                </div>
+
             </div>
 
             {/* Global styles for Swiper Pagination overrides */}
             <style dangerouslySetInnerHTML={{
                 __html: `
                 .swiper-custom-bullet {
-                    width: 8px;
-                    height: 8px;
-                    background-color: #d1d5db; /* slate-300 */
+                    width: 6px;
+                    height: 6px;
+                    background-color: #cbd5e1; /* slate-300 */
                     border-radius: 50%;
                     display: inline-block;
                     cursor: pointer;
@@ -246,7 +248,7 @@ const Packages = () => {
                 }
                 .swiper-custom-bullet-active {
                     background-color: #94a3b8; /* slate-400 */
-                    transform: scale(1.2);
+                    transform: scale(1.3);
                 }
                 .swiper-button-disabled {
                     opacity: 0.3;
