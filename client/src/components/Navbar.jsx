@@ -17,9 +17,9 @@ const Navbar = () => {
 
     // Desktop top navigation data updated with route paths
     const navItems = [
-        { name: 'Home', path: '/diagnosticsolutions' },
+        { name: 'Home', path: '/' },
         { name: 'Membership', path: '/membership' },
-        { name: 'Book a Test', path: '/' },
+        { name: 'Book a Test', path: '/book-a-test' },
         {
             name: 'Reports',
             path: '/reports',

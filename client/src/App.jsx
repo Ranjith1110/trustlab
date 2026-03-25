@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import DiagnosticSolutions from './pages/DiagnosticSolutions';
 import Footer from './components/Footer';
+import BookTest from './pages/BookTest';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -40,6 +41,8 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/diagnosticsolutions" element={<DiagnosticSolutions />} />
+        <Route path="/book-a-test" element={<BookTest />} />
+
         <Route path="/membership" element={<div className="pt-32 text-center text-2xl min-h-screen">Membership Page Coming Soon</div>} />
         <Route path="/collaborate" element={<div className="pt-32 text-center text-2xl min-h-screen">Collaborate Page Coming Soon</div>} />
       </Routes>

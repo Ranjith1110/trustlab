@@ -2,228 +2,180 @@ import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
-import { ArrowRight, AlertCircle, ShieldCheck, Activity } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Hero = () => {
-    // 1. Added an outer container ref to safely house the GSAP pin-spacer
-    const containerRef = useRef(null);
-    const triggerRef = useRef(null);
-    const scannerRef = useRef(null);
-    const imageParallaxRef = useRef(null);
-    const imageContainerRef = useRef(null);
+    const sectionRef = useRef(null);
 
     useEffect(() => {
-        // Smooth Scroll Initialization
-        const lenis = new Lenis();
-        let rafId;
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            smooth: true,
+        });
+
         function raf(time) {
             lenis.raf(time);
-            rafId = requestAnimationFrame(raf);
+            requestAnimationFrame(raf);
         }
-        rafId = requestAnimationFrame(raf);
+        requestAnimationFrame(raf);
 
-        // 2. Scope the GSAP context to the OUTER container
         const ctx = gsap.context(() => {
-            
-            // Initial Premium Reveal (On Load)
-            const tlLoad = gsap.timeline();
-            tlLoad.fromTo(imageContainerRef.current, 
-                { height: "0vh", opacity: 0 }, 
-                { height: "80vh", opacity: 1, duration: 1.5, ease: "expo.inOut" }
-            )
-            .from(".hero-line", {
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                stagger: 0.1,
-                ease: "power3.out"
-            }, "-=0.8");
+            const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-            // GSAP Timeline for Scroll Storytelling
-            const tlScroll = gsap.timeline({
+            tl.fromTo(".hero-elem",
+                { y: 40, opacity: 0 },
+                { y: 0, opacity: 1, stagger: 0.15, duration: 1, delay: 0.2 }
+            )
+                .fromTo(".hero-bg-shape",
+                    { scaleX: 0, transformOrigin: "right center" },
+                    { scaleX: 1, duration: 1.2, ease: "expo.inOut" },
+                    "-=0.8"
+                )
+                .fromTo(".hero-img",
+                    { scale: 0.9, opacity: 0, y: 30 },
+                    { scale: 1, opacity: 1, y: 0, stagger: 0.2, duration: 1 },
+                    "-=0.6"
+                )
+                .fromTo(".hero-float-card",
+                    { scale: 0.8, opacity: 0, x: -30 },
+                    { scale: 1, opacity: 1, x: 0, duration: 1, ease: "back.out(1.5)" },
+                    "-=0.6"
+                );
+
+            gsap.to(".hero-img-1", {
+                yPercent: -15,
                 scrollTrigger: {
-                    trigger: triggerRef.current, // Pin the inner section
+                    trigger: sectionRef.current,
                     start: "top top",
-                    end: "+=800%", 
-                    pin: true,
-                    scrub: 1,
+                    end: "bottom top",
+                    scrub: 1.5
+                }
+            });
+            gsap.to(".hero-img-2", {
+                yPercent: -5,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: 1
+                }
+            });
+            gsap.to(".hero-img-3", {
+                yPercent: -20,
+                scrollTrigger: {
+                    trigger: sectionRef.current,
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: 2
                 }
             });
 
-            // Step 1: Fade initial text & Start Scanner inside the capsule (Your original scan animation!)
-            tlScroll.to(".initial-text", { opacity: 0, scale: 0.95, duration: 1 })
-                    .to(scannerRef.current, { top: "100%", duration: 14, ease: "none" }, 0)
-                    // Parallax effect on the image inside the capsule
-                    .to(imageParallaxRef.current, { y: "-15%", duration: 14, ease: "none" }, 0);
+        }, sectionRef);
 
-            // Step 2: Sequential Point Reveal
-            const pointTimeline = [
-                { class: ".pt-1", start: 1 },
-                { class: ".pt-2", start: 4 },
-                { class: ".pt-3", start: 7 },
-                { class: ".pt-4", start: 10 }
-            ];
-
-            pointTimeline.forEach((pt, index) => {
-                // Fade In & float up
-                tlScroll.fromTo(pt.class, 
-                    { opacity: 0, y: 40, scale: 0.95 }, 
-                    { opacity: 1, y: 0, scale: 1, duration: 1.5, ease: "back.out(1.2)" }, 
-                    pt.start
-                );
-                
-                // Fade Out / Blur
-                tlScroll.to(pt.class, { 
-                    opacity: index === 3 ? 0 : 0.05, 
-                    filter: "blur(8px)", 
-                    scale: 0.95,
-                    duration: 1.2 
-                }, pt.start + 2.5);
-            });
-
-            // Step 3: Final CTA Reveal 
-            tlScroll.fromTo(".final-section", 
-                { opacity: 0, y: 50, pointerEvents: "none" }, 
-                { opacity: 1, y: 0, pointerEvents: "auto", duration: 2, ease: "power4.out" }, 
-                13.5
-            );
-        }, containerRef); // IMPORTANT: Passing containerRef here binds cleanup to the wrapper
-
-        // 3. Bulletproof Cleanup Function
+        // Cleanup
         return () => {
-            cancelAnimationFrame(rafId);
             lenis.destroy();
-            // Force kill all triggers globally just in case, then revert the scoped context
-            ScrollTrigger.getAll().forEach(t => t.kill());
-            ctx.revert(); 
+            ctx.revert();
         };
     }, []);
 
-    const medicalPoints = [
-        { id: "pt-1", text: "15% of people with diabetes are unaware of their condition until severe complications arise.", side: "left", top: "25%" },
-        { id: "pt-2", text: "40% of cancer diagnoses occur in patients with no prior symptoms.", side: "right", top: "35%" },
-        { id: "pt-3", text: "1 in 3 suffer from undetected high blood pressure, the leading silent cause of heart attacks.", side: "left", top: "45%" },
-        { id: "pt-4", text: "1 in 5 seemingly healthy individuals show signs of silent liver disease during health checkups.", side: "right", top: "55%" },
-    ];
-
     return (
-        /* The Outer Container safely holds the pin-spacer generated by ScrollTrigger so React can delete it */
-        <div ref={containerRef} className="relative w-full">
-            <section ref={triggerRef} className="relative h-screen w-full bg-[#f8fafc] overflow-hidden flex items-center justify-center">
-                
-                {/* Premium Background Grid Pattern */}
-                <div className="absolute inset-0 z-0 opacity-[0.03] pointer-events-none" 
-                     style={{ backgroundImage: 'linear-gradient(#0f172a 1px, transparent 1px), linear-gradient(to right, #0f172a 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
-                </div>
+        <section ref={sectionRef} className="relative w-full min-h-screen flex items-center overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col lg:flex-row items-center gap-12 py-20 w-full">
 
-                {/* Central Diagnostic Capsule (The Premium Image Setup) */}
-                <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none mt-20">
-                    <div 
-                        ref={imageContainerRef}
-                        className="relative w-[90%] md:w-[400px] h-[80vh] rounded-[100px] overflow-hidden border-[6px] border-white shadow-[0_30px_60px_rgba(0,0,0,0.08)] bg-white"
-                    >
-                        <img 
-                            ref={imageParallaxRef}
-                            src="/home/banner.png" 
-                            alt="Anatomy Scan" 
-                            className="absolute top-0 left-0 w-full h-[130%] object-cover grayscale-[30%] contrast-125"
-                        />
-                        
-                        {/* Inner Shadow for depth */}
-                        <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.2)] z-10"></div>
+                <div className="flex-1 text-center lg:text-left z-10 mt-10 lg:mt-0">
+                    <h1 className="hero-elem text-5xl lg:text-7xl font-extrabold tracking-tight mb-4">
+                        <span className="text-gray-400 block mb-2">Trusted Kits</span>
+                        <span className="text-[#1F2B7B]">Real Results</span>
+                    </h1>
 
-                        {/* Laser Scanner confined to the capsule */}
-                        <div 
-                            ref={scannerRef}
-                            className="absolute top-0 left-0 w-full h-[2px] bg-[#27b199] shadow-[0_0_20px_4px_rgba(41,169,151,0.6)] z-20"
-                        >
-                            <div className="absolute left-1/2 -translate-x-1/2 -top-6 bg-white text-[#27b199] text-[9px] font-black uppercase tracking-widest py-1 px-3 rounded-full shadow-md flex items-center gap-2">
-                                <Activity className="w-3 h-3 animate-pulse" /> Scanning
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Layer 1: Opening Statement */}
-                <div className="initial-text absolute inset-0 flex flex-col items-center justify-center z-20 text-center px-6 pointer-events-none">
-                    <div className="bg-white/70 backdrop-blur-md px-8 py-10 rounded-3xl shadow-xl max-w-4xl border border-white/50 mt-20">
-                        <div className="flex items-center justify-center gap-2 mb-6 overflow-hidden">
-                            <div className="h-[1px] w-8 md:w-12 bg-[#27b199] hero-line" />
-                            <span className="text-[#27b199] text-[10px] md:text-xs font-bold tracking-[0.4em] uppercase hero-line">TrustLab Premium Diagnostics</span>
-                            <div className="h-[1px] w-8 md:w-12 bg-[#27b199] hero-line" />
-                        </div>
-                        
-                        <h1 className="text-[#0f172a] text-4xl md:text-6xl font-light leading-tight">
-                            <span className="block overflow-hidden pb-2">
-                                <span className="block hero-line">Your body often stays</span>
-                            </span>
-                            <span className="block overflow-hidden pb-2">
-                                <span className="block hero-line italic font-serif text-[#27b199]">silent</span>
-                            </span>
-                            <span className="block overflow-hidden pb-2">
-                                <span className="block hero-line">until it's too late.</span>
-                            </span>
-                        </h1>
-                        
-                        <div className="overflow-hidden mt-8">
-                            <p className="text-slate-400 text-[10px] md:text-xs font-bold uppercase tracking-[0.3em] animate-pulse hero-line">Scroll to Analyze</p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Layer 2: The 4 Points (Sequential) */}
-                <div className="absolute inset-0 z-30 pointer-events-none">
-                    {medicalPoints.map((point, index) => (
-                        <div 
-                            key={point.id}
-                            className={`${point.id.replace('pt', 'pt')} absolute ${point.side === 'left' ? 'left-[4%] md:left-[12%]' : 'right-[4%] md:right-[12%]'} max-w-[280px] md:max-w-sm`}
-                            style={{ top: point.top }}
-                        >
-                            <div className="bg-white/80 backdrop-blur-xl p-5 md:p-6 rounded-2xl border border-white shadow-[0_20px_40px_rgba(0,0,0,0.06)] relative overflow-hidden">
-                                {/* Decorative Accent */}
-                                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-[#27b199] to-[#f5ed00]"></div>
-                                
-                                <div className="flex items-center gap-3 mb-3">
-                                    <div className="p-2 rounded-xl bg-[#27b199]/10">
-                                        <AlertCircle className="w-4 h-4 text-[#27b199]" />
-                                    </div>
-                                    <h3 className="text-[#0f172a] font-black uppercase tracking-widest text-[9px] md:text-[10px]">Fact 0{index + 1}</h3>
-                                </div>
-                                <p className="text-[#334155] text-sm md:text-base font-medium leading-relaxed">
-                                    {point.text}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Layer 3: Final Call to Action */}
-                <div className="final-section absolute inset-0 flex flex-col items-center justify-center z-40 bg-[#f8fafc]/95 backdrop-blur-lg px-6 text-center">
-                    <div className="p-5 rounded-full bg-white shadow-xl mb-8 border border-slate-100">
-                        <ShieldCheck className="w-12 h-12 text-[#27b199]" />
-                    </div>
-                    <h2 className="text-[#0f172a] text-3xl md:text-6xl font-light mb-6">
-                        Don't wait to find out <br />
-                        <span className="font-bold relative inline-block">
-                            what's hiding within.
-                            <span className="absolute bottom-1 left-0 w-full h-3 bg-[#f5ed00]/40 -z-10 rounded-full"></span>
-                        </span>
-                    </h2>
-                    <p className="text-slate-500 mb-10 max-w-lg text-sm md:text-base">
-                        Advanced molecular diagnostics and personalized health monitoring for those who value clarity and longevity.
+                    <p className="hero-elem text-gray-600 text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                        Order medical-grade test kits, return by mail, or schedule doorstep collection. Get fast, accurate, secure results online — anytime, anywhere, hassle-free.
                     </p>
-                    <button className="group relative px-10 py-4 bg-[#0f172a] text-white rounded-full overflow-hidden transition-all shadow-xl hover:shadow-[0_10px_30px_rgba(41,169,151,0.3)] pointer-events-auto cursor-pointer">
-                        <span className="relative z-10 flex items-center gap-3 font-bold tracking-[0.15em] uppercase text-xs">
-                            Book Your Test <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform" />
-                        </span>
-                        <div className="absolute inset-0 bg-[#27b199] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-                    </button>
+
+                    <div className="hero-elem flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-16">
+                        <button className="px-8 py-4 bg-[#FEED02] text-[#1F2B7B] font-bold rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all flex items-center gap-2 w-full sm:w-auto justify-center">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                            Book Test
+                        </button>
+                        <button className="px-8 py-4 bg-transparent text-[#1F2B7B] font-semibold rounded-full hover:bg-gray-100 transition-all flex items-center gap-2 w-full sm:w-auto justify-center">
+                            View All Tests
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div className="hero-elem flex items-center justify-center lg:justify-start gap-12">
+                        <div>
+                            <h3 className="text-4xl font-black text-[#1F2B7B] mb-1">100<span className="text-2xl text-gray-400">%</span></h3>
+                            <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold flex items-center gap-1">
+                                <span className="text-[#27B199]"></span> Safe & Private
+                            </p>
+                        </div>
+                        <div>
+                            <h3 className="text-4xl font-black text-[#1F2B7B] mb-1">98<span className="text-2xl text-gray-400">%</span></h3>
+                            <p className="text-xs text-gray-500 uppercase tracking-wider font-semibold flex items-center gap-1">
+                                <span className="text-[#27B199]"></span> Satisfaction Rate
+                            </p>
+                        </div>
+                    </div>
                 </div>
-            </section>
-        </div>
+
+                <div className="flex-1 relative w-full h-[500px] lg:h-[650px] max-w-lg lg:max-w-none mx-auto mt-12 lg:mt-0 hidden md:block">
+
+                    <div className="hero-bg-shape absolute right-0 top-10 bottom-10 w-[85%] bg-[#1F2B7B] rounded-l-[40px] rounded-r-2xl shadow-2xl"></div>
+
+                    <img
+                        src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=400&h=600"
+                        alt="Healthcare Professional"
+                        className="hero-img hero-img-1 absolute top-0 left-[5%] w-[45%] h-[55%] object-cover rounded-[30px] shadow-xl border-[6px] border-[#F8FAFC] z-20"
+                    />
+
+                    <img
+                        src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=400&h=600"
+                        alt="Patient Blood Draw"
+                        className="hero-img hero-img-2 absolute top-[10%] right-[-2%] w-[42%] h-[50%] object-cover rounded-[30px] shadow-lg border-[6px] border-[#F8FAFC] z-10"
+                    />
+
+                    <img
+                        src="https://images.unsplash.com/photo-1579154204601-01588f351e67?auto=format&fit=crop&q=80&w=400&h=600"
+                        alt="Diagnostic Test Kit"
+                        className="hero-img hero-img-3 absolute bottom-[2%] right-[5%] w-[45%] h-[35%] object-cover rounded-[30px] shadow-lg border-[6px] border-[#F8FAFC] z-20"
+                    />
+
+                    <div className="hero-float-card absolute bottom-[10%] left-[-5%] bg-[#27B199] text-white p-5 rounded-2xl shadow-2xl z-30 flex flex-col gap-3 w-[240px]">
+                        <div className="flex justify-between items-start">
+                            <div className="bg-white/20 w-12 h-12 rounded-full flex items-center justify-center">
+                                <svg className="w-6 h-6 text-[#1F2B7B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path>
+                                </svg>
+                            </div>
+                            <svg className="w-5 h-5 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                            </svg>
+                        </div>
+
+                        <p className="font-bold text-lg leading-tight mt-1">Fast & Reliable <br /> Delivery</p>
+
+                        <div className="flex -space-x-3 mt-2">
+                            <img className="w-10 h-10 rounded-full border-2 border-[#27B199]" src="https://i.pravatar.cc/100?img=33" alt="User" />
+                            <img className="w-10 h-10 rounded-full border-2 border-[#27B199]" src="https://i.pravatar.cc/100?img=12" alt="User" />
+                            <div className="w-10 h-10 rounded-full border-2 border-[#27B199] bg-white text-[#1F2B7B] flex items-center justify-center text-xs font-bold shadow-inner">
+                                +4k
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     );
-};
+}
 
 export default Hero;
