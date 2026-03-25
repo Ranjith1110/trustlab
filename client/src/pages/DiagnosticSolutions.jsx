@@ -17,8 +17,6 @@ const DiagnosticSolutions = () => {
         <MissionVideo />
         <StatsParallax />
         <QualityCommitment />
-        <DirectoryOfServices />
-        <HomeCollection />
         <ContactSection />
         <TrustedHands />
         <LatestNews />
